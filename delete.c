@@ -1,5 +1,6 @@
 #include<stdio.h>
 
+
 void delete(struct node **head_ref, int val)
 {
    /*

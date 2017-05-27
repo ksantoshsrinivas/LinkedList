@@ -6,6 +6,10 @@ struct node
    struct node *next;
 };
 
+void atBeginning(struct node **, int);
+void atMiddle(struct node **, int, int);
+void atEnd(struct node **, int);
+
 void atBeginning(struct node **head_ref, int n)
 {
    struct node *p = (struct node*)malloc(sizeof(struct node));
@@ -23,6 +27,7 @@ void atBeginning(struct node **head_ref, int n)
 
 void atMiddle(struct node **head_ref, int n, int pos)
 {
+   /* We assume that the index starts with 0 */
    struct node *p = (struct node*)malloc(sizeof(struct node));
    struct node *q = *head_ref;
    int count = 0;
@@ -34,6 +39,11 @@ void atMiddle(struct node **head_ref, int n, int pos)
       *head_ref = p;
       return;
    }
+   if(pos==0)
+   {
+      atBeginning(head_ref, n);
+      return;
+   }
    while(q->next!=NULL && count<pos-1)
    {
       q=q->next;
@@ -41,7 +51,8 @@ void atMiddle(struct node **head_ref, int n, int pos)
    }
    if(q->next==NULL && count<pos)
    {
-      printf("Position is more than the length of the list.. so cannot insert\n");
+      printf("The list reached the end and length of list < position..so inserting at the end");
+      atEnd(head_ref, n);
       return;
    }
    p->next = q->next;
@@ -66,7 +77,7 @@ void atEnd(struct node **head_ref, int n)
    return;
 }
 
-void display(struct node **head_ref)
+/*void display(struct node **head_ref)
 {
    struct node *p = NULL;
    if(*head_ref==NULL)
@@ -78,45 +89,4 @@ void display(struct node **head_ref)
    for(p=*head_ref;p->next!=NULL;p=p->next)
       printf("%d->", p->data);
    printf("%d\n", p->data);
-}
-
-int main()
-{
-   struct node *head = NULL;
-   int ch, n, pos;
-   do
-   {
-      printf("Enter the value to be inserted:");
-      scanf("%d", &n);
-      printf("********Choose where to insert*********\n");
-      printf("1:Insert at the beginning\n");
-      printf("2:Intert at middle\n");
-      printf("3:Insert at end\n");
-      printf("-1:Exit\n");
-      printf("Enter your choice :");
-      scanf("%d", &ch);
-      switch(ch)
-      {
-         case 1:  atBeginning(&head,n);
-                  display(&head);
-                  break;
-
-         case 2:  printf("Enter the position where to insert (otherthan at beginning and at end)\n");
-                  scanf("%d", &pos);
-                  atMiddle(&head, n, pos);
-                  display(&head);
-                  break;
-
-         case 3:  atEnd(&head,n);
-                  display(&head);
-                  break;
-
-         case -1: printf("Program exiting...\n");
-                  break;
-
-         default: printf("Please enter a valid choice\n");
-                  break;
-      }
-   }while(ch!=-1);
-   return 0;
-}
+}*/

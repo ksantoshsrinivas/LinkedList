@@ -6,23 +6,6 @@ struct node
    struct node *next;
 };
 
-void atEnd(struct node **head_ref, int n)
-{
-   struct node *p = (struct node*)malloc(sizeof(struct node));
-   struct node *last = *head_ref;
-   p->data = n;
-   p->next = NULL;
-   if(*head_ref==NULL)
-   {
-      *head_ref = p;
-      return;
-   }
-   while(last->next!=NULL)
-      last=last->next;
-   last->next = p;
-   return;
-}
-
 void atBeginning(struct node **head_ref, int n)
 {
    struct node *p = (struct node*)malloc(sizeof(struct node));
@@ -63,6 +46,23 @@ void atMiddle(struct node **head_ref, int n, int pos)
    }
    p->next = q->next;
    q->next = p;
+   return;
+}
+
+void atEnd(struct node **head_ref, int n)
+{
+   struct node *p = (struct node*)malloc(sizeof(struct node));
+   struct node *last = *head_ref;
+   p->data = n;
+   p->next = NULL;
+   if(*head_ref==NULL)
+   {
+      *head_ref = p;
+      return;
+   }
+   while(last->next!=NULL)
+      last=last->next;
+   last->next = p;
    return;
 }
 

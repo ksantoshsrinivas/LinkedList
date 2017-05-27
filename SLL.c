@@ -9,11 +9,9 @@ int main()
    int ch, n, pos, del;
    while(1)
    {
-      printf("********Choose where to insert*********\n");
-      printf("1:Insert at the beginning\n");
-      printf("2:Intert at middle\n");
-      printf("3:Insert at end\n");
-      printf("4:Delete an element\n");
+      printf("********---MENU---********\n");
+      printf("1:Insert an element\n");
+      printf("2:Delete an element\n");
       printf("-1:Exit\n");
       printf("Enter your choice :");
       scanf("%d", &ch);
@@ -25,12 +23,6 @@ int main()
       switch(ch)
       {        
          case 1:  printf("Enter the value to be inserted:");
-		            scanf("%d", &n);
-         		   atBeginning(&head,n);
-                  display(&head);
-                  break;
-
-         case 2:  printf("Enter the value to be inserted:");
                   scanf("%d", &n);
                   printf("Enter the position where to insert:");
                   scanf("%d", &pos);
@@ -38,13 +30,7 @@ int main()
                   display(&head);
                   break;
 
-         case 3:  printf("Enter the value to be inserted:");
-                  scanf("%d", &n);
-                  atEnd(&head,n);
-                  display(&head);
-                  break;
-         
-         case 4:  if(head==NULL)
+         case 2:  if(head==NULL)
                   {
                      printf("The list is empty, nothing to delete\n");
                      break;

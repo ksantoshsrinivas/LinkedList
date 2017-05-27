@@ -2,6 +2,7 @@
 #include "insert.c"
 #include "delete.c"
 #include "display.c"
+#include "length.c"
 
 int main()
 {
@@ -12,6 +13,7 @@ int main()
       printf("********---MENU---********\n");
       printf("1:Insert an element\n");
       printf("2:Delete an element\n");
+      printf("3:Find length of the list\n");
       printf("-1:Exit\n");
       printf("Enter your choice :");
       scanf("%d", &ch);
@@ -39,6 +41,9 @@ int main()
                   scanf("%d", &del);
                   delete(&head, del);
                   display(&head);
+                  break;
+         
+         case 3:  printf("The number of elements in the list is %d\n", FindLength(&head));
                   break;
 
          default: printf("Please enter a valid choice\n");

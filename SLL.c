@@ -7,6 +7,7 @@
 #include "searchLL.c"
 #include "swap.c"
 #include "middle.c"
+#include "delete_list.c"
 
 int main()
 {
@@ -22,6 +23,7 @@ int main()
       printf("4:Search for a value in the list\n");
       printf("5:Swap two nodes\n");
       printf("6:Print the middle node\n");
+      printf("7:Delete the list completely\n");
       printf("-1:Exit\n");
       printf("Enter your choice :");
       scanf("%d", &ch);
@@ -67,6 +69,11 @@ int main()
          
          case 6:  display(&head);
                   print_middle(&head);
+                  break;
+
+         case 7:  display(&head);
+                  delete_list(&head);
+                  display(&head);
                   break;
 
          default: printf("Please enter a valid choice\n");

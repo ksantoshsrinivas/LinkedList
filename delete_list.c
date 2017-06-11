@@ -1,5 +1,4 @@
 #include<stdio.h>
-#include<assert.h>
 
 void delete_list(struct node **head_ref)
 {
@@ -13,3 +12,4 @@ void delete_list(struct node **head_ref)
    }
    *head_ref = NULL;
 }
+

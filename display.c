@@ -7,7 +7,7 @@ void display(struct node **head_ref)
       printf("List is empty\n");
       return;
    }
-   printf("The elements in the list are:\n");
+//   printf("The elements in the list are:\n");
    for(p=*head_ref;p->next!=NULL;p=p->next)
       printf("%d->", p->data);
    printf("%d\n", p->data);

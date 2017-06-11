@@ -14,32 +14,16 @@ void atBeginning(struct node **head_ref, int n)
 {
    struct node *p = (struct node*)malloc(sizeof(struct node));
    p->data = n;
-   p->next = NULL;
-   if(*head_ref==NULL)
-   {
-      *head_ref = p;
-      return;
-   }
    p->next = *head_ref;
    *head_ref = p;
-   return;
 }
 
 void atMiddle(struct node **head_ref, int n, int pos)
 {
    /* We assume that the index starts with 0 */
-   struct node *p = (struct node*)malloc(sizeof(struct node));
    struct node *q = *head_ref;
    int count = 0;
-   p->data = n;
-   p->next = NULL;
-   if(*head_ref==NULL)
-   {
-      printf("List is empty.. so inserting at the beginning\n");
-      *head_ref = p;
-      return;
-   }
-   if(pos==0)
+   if(*head_ref==NULL || pos==0)
    {
       atBeginning(head_ref, n);
       return;
@@ -49,15 +33,16 @@ void atMiddle(struct node **head_ref, int n, int pos)
       q=q->next;
       count++;
    }
-   if(q->next==NULL && count<pos)
+   if(q->next==NULL)
    {
-      printf("The list reached the end and length of list < position..so inserting at the end");
+      printf("The list reached the end..so inserting at the end\n");
       atEnd(head_ref, n);
       return;
    }
+   struct node *p = (struct node*)malloc(sizeof(struct node));
+   p->data = n;
    p->next = q->next;
    q->next = p;
-   return;
 }
 
 void atEnd(struct node **head_ref, int n)
@@ -66,13 +51,6 @@ void atEnd(struct node **head_ref, int n)
    struct node *last = *head_ref;
    p->data = n;
    p->next = NULL;
-   if(*head_ref==NULL)
-   {
-      *head_ref = p;
-      return;
-   }
-   while(last->next!=NULL)
-      last=last->next;
+   for(; last->next!=NULL;last=last->next);
    last->next = p;
-   return;
 }
